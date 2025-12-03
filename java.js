@@ -1,3 +1,9 @@
+let human = ""
+
+function getHumanChoice () {
+    const human = prompt ("Ingresa tu opcion:");
+}
+
 function getComputerchoice () {
     const randomNumber = Math.random ();
 
@@ -13,28 +19,34 @@ function getComputerchoice () {
         return "scissors";
     }
 }
+  /*  getHumanChoice ();*/
 
-console.log ("Eleccion 1:", getComputerchoice ());
-console.log ("Eleccion 2:", getComputerchoice ());
-console.log ("Eleccion 3:", getComputerchoice ()); 
+let humanScore = 0;
+let computerScore = 0;
 
-function getHumanChoice () {
-    const choice = prompt ("Ingresa tu opcion:");
-    alert ("Tu opcion es: " + choice);
+function playRound (humanChoice, computerChoice) {
+    const human = humanChoice.toLowerCase(). trim();
+    const computer = computerChoice. toLowerCase() .trim ();
+    let resultadoRonda = "";
+
+    if (human === computer) {
+    resultadoRonda = "Empate";
+    console.log (`Empate!Ambos eligieron ${humanChoice}`);
     }
 
-    getHumanChoice ();
-
-let puntajeUser = 0;
-let puntajeComputer = 0;
-const PuntosPorAcierto = 1;
-
-function humanScore () {
-    humanScore = humanScore + puntajeUser;
+    else if (
+    (human === "rock" && computer === "scissors") ||
+    (human === "scissors" && computer === "paper") ||
+    (human === "paper" && computer === "rock" )
+    ) {
+    resultadoRonda = "human-win";
+    humanScore++
+    console.log (`Ganaste! ${human} beats ${computer}`);
+    }
+    else
+    {resultadoRonda = computer-win;
+    computerScore++ 
+    console.log (`Perdiste! ${computer} beats ${humanChoice}`);
+    }
+    console.log(`Puntaje: Humano: ${humanScore}- Computadora: ${computerScore}`);
 }
-
-function computerScore () {
-    computerScore = computerScore + puntajeComputer;
-}
-
-
