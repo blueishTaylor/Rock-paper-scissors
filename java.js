@@ -1,29 +1,23 @@
-let human = ""
+    let humanScore = 0;
+    let computerScore = 0;
 
 function getHumanChoice () {
-    const human = prompt ("Ingresa tu opcion:");
+    const humanInput = prompt ("Ingresa tu opcion:");
+    return humanInput;
 }
+    
 
 function getComputerchoice () {
     const randomNumber = Math.random ();
 
     if (randomNumber < 0.3333) {
         return "rock";
-    }
-
-    else if (randomNumber < 0.6666) {
+    } else if (randomNumber < 0.6666) {
         return "paper";
-    }
-
-    else {
+    }else {
         return "scissors";
     }
 }
-  /*  getHumanChoice ();*/
-
-let humanScore = 0;
-let computerScore = 0;
-
 function playRound (humanChoice, computerChoice) {
     const human = humanChoice.toLowerCase(). trim();
     const computer = computerChoice. toLowerCase() .trim ();
@@ -44,9 +38,31 @@ function playRound (humanChoice, computerChoice) {
     console.log (`Ganaste! ${human} beats ${computer}`);
     }
     else
-    {resultadoRonda = computer-win;
+    {resultadoRonda = "computer-win";
     computerScore++ 
     console.log (`Perdiste! ${computer} beats ${humanChoice}`);
     }
-    console.log(`Puntaje: Humano: ${humanScore}- Computadora: ${computerScore}`);
 }
+
+function playGame () {
+console.log ("---Inicio juego Rock, Paper, Scissors---")
+for (let i =0; i<5;i++) {
+console.log (`\n---Ronda ${i + 1}---`);
+    const humanSelection = getHumanChoice ();
+    const computerSelection = getComputerchoice ();
+playRound (humanSelection,computerSelection);
+console.log (`Puntaje acumulado: User ${humanScore} | Computer ${computerScore}`);
+}
+
+
+console.log ("\n---FIN DEL JUEGO---");
+        if (humanScore> computerScore) {
+            console.log (`FELICIDADES! GANASTE CON ${humanScore} a ${computerScore}`);
+        } else if (computerScore>humanScore) {
+            console.log (`FIN DEL JUEGO. LA COMPUTADORA GANA CON ${computerScore} a ${humanScore}`);
+        } else {
+            console.log ("FIN DEL JUEGO! ES UN EMPATE")
+        } 
+}
+
+playGame ()
